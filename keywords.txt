@@ -1,0 +1,33 @@
+#######################################
+# Syntax Coloring Map For EasyStepper
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+EasyStepper		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init			KEYWORD2
+run				KEYWORD2
+setRPM			KEYWORD2
+moveSteps		KEYWORD2
+moveRevolutions	KEYWORD2
+moveDegrees		KEYWORD2
+setFullStep		KEYWORD2
+setSteps		KEYWORD2
+getStepsLeft	KEYWORD2
+getRPM			KEYWORD2
+getDelay		KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
