@@ -1,8 +1,17 @@
 /*
- * easyStepper.h
+ * EasyStepper.h
  *
- *  Created on: 1 mrt. 2019
- *      Author: miggielsalw
+ * Created and maintained by Paul Miggiels <paul@paulmiggiels.nl>
+ * https://github.com/paulmiggiels/EasyStepper
+ *
+ * License: MIT License
+ * Copyright (c) Paul Miggiels
+ *
+ *
+ * Changelog:
+ * v1.0.0	Initial release
+ * v1.0.1	Cleanup & updated commenting; license added
+ *
  */
 
 #ifndef EASYSTEPPER_H_
@@ -10,8 +19,8 @@
 
 #include <Arduino.h>
 
-const uint32_t usPerMin = 60000000;
-const uint8_t NPins = 4;	// Adjust this value for controllers with different amount of pins
+const uint32_t usPerMin = 60000000; // microseconds per minute
+const uint8_t NPins = 4;			// Adjust this value for controllers with different amount of pins (coils)
 
 
 class EasyStepper {
@@ -31,7 +40,7 @@ public:
 
 	int32_t getStepsLeft() { return (int32_t) direction * stepsLeft; }
 	uint8_t getRPM() { return RPM; }
-	uint16_t getDelay() { return delay; }
+	uint16_t getStepTime() { return stepTime; }
 
 private:
 
@@ -39,15 +48,13 @@ private:
 	void setDirection(bool CW);
 	uint32_t degreesToSteps(uint16_t degrees);
 
-	uint8_t lookup[8] = {B01000, B01100, B00100, B00110, B00010, B00011, B00001, B01001};
-
-	//
+	// Stepper settings
 	uint8_t pins[NPins];
 	uint16_t stepsPerRotation = 4096;
 	uint8_t RPM = 10;
 	int8_t direction = 1;
-	uint16_t delay;
 	uint32_t stepsLeft = 0;
+	uint16_t stepTime;
 	uint32_t lastStepTime = 0;
 
 	// Stepper sequence variables
