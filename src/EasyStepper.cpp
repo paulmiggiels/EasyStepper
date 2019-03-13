@@ -87,7 +87,7 @@ void EasyStepper::moveSteps(bool CW, uint32_t steps) {
  *
  * 	@param 	turns	Revolutions to turn
 ******************************************************************************/
-void EasyStepper::moveRevolutions(bool CW, uint8_t turns) {
+void EasyStepper::moveRotations(bool CW, uint8_t turns) {
 	// Force 32-bit integer here, other wise the 16-bit from stepsPerRotation is used
 	// This would result in a maximum of 16 revolutions before overflow occurs
 	stepsLeft = (uint32_t) turns * stepsPerRotation;

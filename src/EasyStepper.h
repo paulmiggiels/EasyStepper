@@ -33,7 +33,7 @@ public:
 	void run();
 	void setRPM(uint8_t rpm);
 	void moveSteps(bool CW, uint32_t steps);
-	void moveRevolutions(bool CW, uint8_t turns);
+	void moveRotations(bool CW, uint8_t turns);
 	void moveDegrees(bool CW, uint16_t degrees);
 	void setFullStep(bool fullstep);
 	void setSteps(uint16_t steps);
@@ -43,6 +43,7 @@ public:
 	int32_t getStepsLeft() { return (int32_t) direction * stepsLeft; }
 	uint8_t getRPM() { return RPM; }
 	uint16_t getStepTime() { return stepTime; }
+	uint16_t getStepsPerRotation() { return stepsPerRotation; }
 
 private:
 
