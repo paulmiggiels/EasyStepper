@@ -1,15 +1,21 @@
 /*
  * EasyStepper.cpp
  *
+ * Created and maintained by Paul Miggiels <paul@paulmiggiels.nl>
+ * https://github.com/paulmiggiels/EasyStepper
+ *
+ * License: MIT License
+ * Copyright (c) Paul Miggiels
+ *
  */
 
 #include "EasyStepper.h"
 #include "Arduino.h"
 
+
 // PUBLIC
 //	These can be called to set or read stepper info
 //
-
 
 /* EasyStepper(...)************************************************************
  * 	Constructor to initialise members with the right pin numbers
@@ -82,7 +88,9 @@ void EasyStepper::moveSteps(bool CW, uint32_t steps) {
  * 	@param 	turns	Revolutions to turn
 ******************************************************************************/
 void EasyStepper::moveRevolutions(bool CW, uint8_t turns) {
-	stepsLeft = turns * stepsPerRotation;
+	// Force 32-bit integer here, other wise the 16-bit from stepsPerRotation is used
+	// This would result in a maximum of 16 revolutions before overflow occurs
+	stepsLeft = (uint32_t) turns * stepsPerRotation;
 	setDirection(CW);
 }
 
@@ -131,9 +139,11 @@ void EasyStepper::setSteps(uint16_t steps) {
 }
 
 
+
 // 	PRIVATES
 //	Don't touch them
 //
+
 
 /* setDirection(..)************************************************************
  * 	Change the direction of movement: CW or CCW
@@ -153,7 +163,8 @@ void EasyStepper::setDirection(bool CW) {
  * 	@return	steps	Steps to move
 ******************************************************************************/
 uint32_t EasyStepper::degreesToSteps(uint16_t degrees) {
-	uint32_t steps = (degrees/360) * stepsPerRotation;
+	// Force 32-bit again to prevent overflow
+	uint32_t steps = (uint32_t) (degrees/360) * stepsPerRotation;
 	return steps;
 }
 

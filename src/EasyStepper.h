@@ -38,6 +38,8 @@ public:
 	void setFullStep(bool fullstep);
 	void setSteps(uint16_t steps);
 
+	// getStepsLeft() is kind of dirty: by converting to signed int the range is halved
+	// but even then it can still hold the equivalent of 524,288 rotations - should be plenty
 	int32_t getStepsLeft() { return (int32_t) direction * stepsLeft; }
 	uint8_t getRPM() { return RPM; }
 	uint16_t getStepTime() { return stepTime; }
