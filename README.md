@@ -22,7 +22,7 @@ The pins for the driver can be connected to any digital pin on the Arduino. Feed
 the current draw is more than the Arduino can supply and it is likely to damage your Arduino if you try to.
 
 Example wiring diagram:
-
+![wiring diagram](extra/uln2003_wiring_diagram_bb.png)
 
 ### Methods
 See an overview of the methods below. Since the moves are non-blocking, `run()` should be called in each iteration of `loop()`. It will automatically check if it actually needs to move the stepper.\
