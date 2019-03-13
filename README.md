@@ -73,7 +73,7 @@ This library can be easily adapted to work with drivers with different pin numbe
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see [license.txt](license.txt) for details.
 
 ## Acknowledgements
 This library is loosely based on the [CheapStepper library](https://github.com/tyhenry/CheapStepper)
