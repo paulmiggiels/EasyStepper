@@ -107,6 +107,17 @@ void EasyStepper::moveDegrees(bool CW, uint16_t degrees) {
 	setDirection(CW);
 }
 
+
+/* release()*******************************************************************
+ * 	Release the hold current on the coils
+******************************************************************************/
+void EasyStepper::release() {
+	for (uint8_t i = 0; i < NPins; i++) {
+		digitalWrite(pins[i], 0);
+	}
+}
+
+
 /* setFullStep(..)*************************************************************
  * 	Enables/disables full step
  * 	Disabled means two-one on half-step mode is used (default)
@@ -136,6 +147,16 @@ void EasyStepper::setFullStep(bool fullstep) {
 void EasyStepper::setSteps(uint16_t steps) {
 	stepsPerRotation = steps;
 	setRPM(RPM);
+}
+
+
+/* setAutoRelease()************************************************************
+ * 	Enables/disables auto release of the hold current after finishing a move
+ *
+ * 	@param	release	True to enable auto release
+******************************************************************************/
+void EasyStepper::setAutoRelease(bool release) {
+	autoRelease = release;
 }
 
 
@@ -206,4 +227,12 @@ void EasyStepper::makeStep() {
 		digitalWrite(pins[i], pinSequence[i]);
 	}
 	stepsLeft--;
+
+	// If auto-release enabled and move finished, release the hold current
+	// The delay is a quick-and-dirty way to ensure that the move is fully finished
+	// Occurs only seldom (if at all), so blocking effect is negligible
+	if (autoRelease && stepsLeft == 0) {
+		delayMicroseconds(stepTime);
+		release();
+	}
 }

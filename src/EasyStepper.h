@@ -35,8 +35,10 @@ public:
 	void moveSteps(bool CW, uint32_t steps);
 	void moveRotations(bool CW, uint8_t turns);
 	void moveDegrees(bool CW, uint16_t degrees);
+	void release();
 	void setFullStep(bool fullstep);
 	void setSteps(uint16_t steps);
+	void setAutoRelease(bool release);
 
 	// getStepsLeft() is kind of dirty: by converting to signed int the range is halved
 	// but even then it can still hold the equivalent of 524,288 rotations - should be plenty
@@ -44,6 +46,7 @@ public:
 	uint8_t getRPM() { return RPM; }
 	uint16_t getStepTime() { return stepTime; }
 	uint16_t getStepsPerRotation() { return stepsPerRotation; }
+	bool getAutoRelease() { return autoRelease; }
 
 private:
 
@@ -56,6 +59,7 @@ private:
 	uint16_t stepsPerRotation = 4096;
 	uint8_t RPM = 10;
 	int8_t direction = 1;
+	bool autoRelease = false;
 	uint32_t stepsLeft = 0;
 	uint16_t stepTime;
 	uint32_t lastStepTime = 0;
