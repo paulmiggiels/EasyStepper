@@ -8,6 +8,7 @@ This library aims to be as lightweight as possible, yet packed with all the esse
 * Half step and full step mode (one-two phase on half step)
 * RPM setting
 * Adjustable for 6- or 8-pin drivers/steppers (or any other number for that matter)
+* Auto-release to release hold current after a move
 
 By default the library uses [one-two phase on half stepping](https://www.rs-online.com/designspark/stepper-motors-and-drives-what-is-full-step-half-step-and-microstepping), which is recommended for the 28BYJ-48. 
 
@@ -39,13 +40,15 @@ Please refer to the [examples](examples/) how to use the methods.
 | `moveDegrees(degrees)` | Move by degrees |
 | `setFullStep(true/false)` | Enable/disable full step mode. Default is half step mode |
 | `setSteps(steps per rotation)` | Adjust number of steps per rotation |
+| `setAutoRelease(true/false)` | Set auto release to release hold current after move |
 | `getStepsLeft()` | Returns number of steps left for the set move |
 | `getRPM()` | Returns RPM set |
 | `getStepTime()` | Returns microsecond delay between steps |
 | `getStepsPerRotation()` | Returns steps per rotation |
+| `getAutoRelease()` | Return auto release enabled/disabled |
 
 ### Default settings & considerations
-The default setting is half stepping with 4096 steps per rotation at 10 rpm.
+The default setting is half stepping with 4096 steps per rotation at 10 rpm and auto-release disabled.
 
 **Note:**\
 Adjusting RPM, half step/full step or number of steps per rotation can be done mid-program as all related values are automatically updated.\
