@@ -79,7 +79,8 @@ This library can be easily adapted to work with drivers with different pin numbe
 This project is licensed under the MIT License - see [license.txt](license.txt) for details.
 
 ## Acknowledgements
-This library is loosely based on the [CheapStepper library](https://github.com/tyhenry/CheapStepper)
+This library is loosely based on the [CheapStepper library](https://github.com/tyhenry/CheapStepper)  
+Fritzing-parts for the schematics were copied from [tardate's X113647 repository](https://github.com/tardate/X113647Stepper)
 
 
 #### Keywords
